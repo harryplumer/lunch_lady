@@ -12,8 +12,17 @@ class Order
   end
 
   def display_order
-    str = "Your order consists of #{@main_dish[:name]}"
+    str = "\nYour order consists of #{@main_dish[:name]}"
     @side_dishes.each{|dish| str += ", #{dish[:name]}"}
     str
+  end
+
+  def total_nutrition
+    total = {calories: 0, fat: 0, carbs: 0, protein: 0}
+    total.each do |key, val|
+      total[key] += @main_dish[:nutrition_facts][key]
+      @side_dishes.each{|dish| total[key] += dish[:nutrition_facts][key]}
+    end
+    total
   end
 end
