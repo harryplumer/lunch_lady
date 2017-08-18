@@ -13,7 +13,7 @@ class Order
 
   def display_order
     str = "Your order consists of #{@main_dish[:name]}"
-    @side_dishes.each{|dish| str += ",#{dish[:name]}"}
+    @side_dishes.each{|dish| str += ", #{dish[:name]}"}
     str
   end
 end
